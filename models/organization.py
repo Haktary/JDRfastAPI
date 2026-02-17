@@ -5,6 +5,8 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 from config.database import Base
 from datetime import datetime
 
+from models.jdr import JDR
+
 
 # ============================
 # ENUMS
@@ -77,6 +79,10 @@ class Organization(Base):
         "OrganizationMembership",
         back_populates="organization",
         cascade="all, delete-orphan"
+    )
+
+    jdrs: Mapped[list["JDR"]] = relationship(
+        "JDR", back_populates="organization", cascade="all, delete-orphan"
     )
 
     def __repr__(self):

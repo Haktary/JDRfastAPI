@@ -2,6 +2,7 @@ annotated-doc==0.0.4
 annotated-types==0.7.0
 anyio==4.12.1
 certifi==2026.1.4
+charset-normalizer==3.4.4
 click==8.3.1
 dnspython==2.8.0
 ecdsa==0.19.1
@@ -21,6 +22,7 @@ markdown-it-py==4.0.0
 MarkupSafe==3.0.3
 mdurl==0.1.2
 passlib==1.7.4
+pillow==12.1.1
 psycopg2-binary==2.9.11
 pyasn1==0.6.2
 pydantic==2.12.5
@@ -32,6 +34,7 @@ python-dotenv==1.2.1
 python-jose==3.5.0
 python-multipart==0.0.22
 PyYAML==6.0.3
+requests==2.32.5
 rich==14.3.2
 rich-toolkit==0.19.4
 rignore==0.7.6

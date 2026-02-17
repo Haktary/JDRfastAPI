@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from contextlib import asynccontextmanager
 from sqlalchemy import text
 from config.database import get_engine, Base
-from routers import auth, organizations
+from routers import auth, organizations, jdr, images
 from models.user import User, GlobalUserRole
 from config.settings import hash_password
 from sqlalchemy.orm import Session
@@ -53,6 +53,8 @@ async def lifespan(app: FastAPI):
 app = FastAPI(lifespan=lifespan)
 app.include_router(auth.router)
 app.include_router(organizations.router)
+app.include_router(jdr.router)
+app.include_router(images.router)
 
 
 @app.get("/")
