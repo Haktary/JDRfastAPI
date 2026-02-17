@@ -22,7 +22,8 @@ async def lifespan(app: FastAPI):
 
         print("✅ Database connected")
 
-        # 🔥 Crée un admin par défaut si aucun admin n'existe
+        # crée un admin  (⚠️ en dev seulement!)
+
         with Session(engine) as db:
             admin_email = "admin@admin.com"
             existing_admin = db.query(User).filter(User.email == admin_email).first()
@@ -30,7 +31,7 @@ async def lifespan(app: FastAPI):
             if not existing_admin:
                 admin_user = User(
                     email=admin_email,
-                    hashed_password=hash_password("admin123"),  # ⚠️ Changez ce mot de passe en production!
+                    hashed_password=hash_password("admin123"),
                     global_role=GlobalUserRole.admin,
                     is_active=True
                 )
@@ -57,6 +58,7 @@ app.include_router(jdr.router)
 app.include_router(images.router)
 
 
+# root test admin seulement
 @app.get("/")
 def read_root():
     return {
